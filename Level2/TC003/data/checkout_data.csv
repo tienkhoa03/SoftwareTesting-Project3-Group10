@@ -1,0 +1,9 @@
+test_id,first_name,last_name,postal_code,expected_type,expected_value
+TC003_001,,Test,700000,error,Error: First Name is required
+TC003_002,A,Test,700000,title,Checkout: Overview
+TC003_003,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,Test,700000,title,Checkout: Overview
+TC003_004,Test,Test,,error,Error: Postal Code is required
+TC003_005,OK,OK,OK,title,Checkout: Overview
+TC003_006,,,error,Error: First Name is required
+TC003_007,a,b,70000,title,Checkout: Overview
+

@@ -1,0 +1,27 @@
+name,type,value
+login_url,url,https://www.saucedemo.com/
+inventory_url,url,https://www.saucedemo.com/inventory.html
+cart_url,url,https://www.saucedemo.com/cart.html
+username_input,id,user-name
+password_input,id,password
+login_button,id,login-button
+cart_badge,css,span.shopping_cart_badge
+add_backpack_button,id,add-to-cart-sauce-labs-backpack
+add_bike_light_button,id,add-to-cart-sauce-labs-bike-light
+add_bolt_t_shirt_button,id,add-to-cart-sauce-labs-bolt-t-shirt
+add_fleece_jacket_button,id,add-to-cart-sauce-labs-fleece-jacket
+add_onesie_button,id,add-to-cart-sauce-labs-onesie
+add_red_t_shirt_button,id,add-to-cart-test.allthethings()-t-shirt-(red)
+remove_backpack_button,id,remove-sauce-labs-backpack
+remove_bike_light_button,id,remove-sauce-labs-bike-light
+remove_bolt_t_shirt_button,id,remove-sauce-labs-bolt-t-shirt
+remove_fleece_jacket_button,id,remove-sauce-labs-fleece-jacket
+remove_onesie_button,id,remove-sauce-labs-onesie
+remove_red_t_shirt_button,id,remove-test.allthethings()-t-shirt-(red)
+continue_shopping_button,id,continue-shopping
+cart_link,css,a.shopping_cart_link
+cart_title_span,xpath,//div[@id='header_container']/div[2]/span
+title_span,css,div#header_container div.header_secondary_container span.title
+item_name_in_cart,xpath,//a[@id='item_4_title_link']/div
+login_error_h3,xpath,//div[@id='login_button_container']/div/form/div[3]/h3
+

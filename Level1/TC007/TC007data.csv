@@ -1,0 +1,18 @@
+ID,Deposit,Withdraw,Type,Script_target,Balance_result,Verified_target,Expected_result,Expected Result Note,Note
+TC-007-001,1000,500,success,,500,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction successful,Transaction successfully,BVA nominal
+TC-007-002,1000,0,no_transaction,,1000,xpath=//span[@ng-show='message'],Transaction successful,No transaction is added,BVA min-
+TC-007-003,1000,1,success,,999,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction successful,Transaction successfully,BVA min
+TC-007-004,1000,2,success,,998,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction successful,Transaction successfully,BVA min+
+TC-007-005,1000,999,success,,1,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction successful,Transaction successfully,BVA max-
+TC-007-006,1000,1000,success,,0,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction successful,Transaction successfully,BVA max
+TC-007-007,1000,1001,balance_insufficient,,1000,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction Failed. You can not withdraw amount more than the balance.,Transaction failed with notification,BVA max+
+TC-007-008,1000,500,success,,500,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction successful,Transaction successfully,ECP 1
+TC-007-009,1000,1100,balance_insufficient,,1000,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction Failed. You can not withdraw amount more than the balance.,Transaction failed with notification,ECP 2
+TC-007-010,1000,-10,no_transaction,"var el = document.querySelector(""input[type='number']""); el.value = '-10'; el.dispatchEvent(new Event('input'));",1000,xpath=//span[@ng-show='message'],Transaction successful,No transaction is added,ECP 3
+TC-007-011,1000,a,input_invalid,,1000,xpath=//input[@type='number'],,Do not allow to type invalid input,ECP 4
+TC-007-012,1000,-100,no_transaction,"var el = document.querySelector(""input[type='number']""); el.value = '-100'; el.dispatchEvent(new Event('input'));",1000,xpath=//span[@ng-show='message'],Transaction successful,No transaction is added,Decision Table rule 1
+TC-007-013,1000,1200,balance_insufficient,,1000,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction Failed. You can not withdraw amount more than the balance.,Transaction failed with notification,Decision Table rule 2
+TC-007-014,1000,400,success,,600,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction successful,Transaction successfully,Decision Table rule 3
+TC-007-015,1000,500,success,,500,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction successful,Transaction successfully,Use case -path 1
+TC-007-016,1000,1500,balance_insufficient,,1000,xpath=(.//*[normalize-space(text()) and normalize-space(.)='Withdrawl'])[1]/following::span[1],Transaction Failed. You can not withdraw amount more than the balance.,Transaction failed with notification,Use case -path 2
+TC-007-017,1000,-1000,no_transaction,"var el = document.querySelector(""input[type='number']""); el.value = '-1000'; el.dispatchEvent(new Event('input'));",1000,xpath=//span[@ng-show='message'],Transaction successful,Do not allow to type invalid input,Use case -path 3

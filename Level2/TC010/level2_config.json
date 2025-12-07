@@ -1,0 +1,119 @@
+{
+  "checkout_test": {
+    "base_url": "https://sweetshop.netlify.app/",
+    "locators": {
+      "add_to_basket": {
+        "type": "link_text",
+        "value": "Add to Basket"
+      },
+      "navbar_toggle": {
+        "type": "css",
+        "value": "button.navbar-toggler"
+      },
+      "basket_link": {
+        "type": "link_text",
+        "value": "1 Basket"
+      },
+      "first_name": {
+        "type": "id",
+        "value": "name"
+      },
+      "last_name": {
+        "type": "xpath",
+        "value": "//form/div/div[2]/input"
+      },
+      "email": {
+        "type": "id",
+        "value": "email"
+      },
+      "country": {
+        "type": "id",
+        "value": "country"
+      },
+      "city": {
+        "type": "id",
+        "value": "city"
+      },
+      "address": {
+        "type": "id",
+        "value": "address"
+      },
+      "zip": {
+        "type": "id",
+        "value": "zip"
+      },
+      "card_name": {
+        "type": "id",
+        "value": "cc-name"
+      },
+      "card_number": {
+        "type": "id",
+        "value": "cc-number"
+      },
+      "card_expiration": {
+        "type": "id",
+        "value": "cc-expiration"
+      },
+      "cvv": {
+        "type": "id",
+        "value": "cc-cvv"
+      },
+      "submit_button": {
+        "type": "xpath",
+        "value": "(.//*[normalize-space(text()) and normalize-space(.)='Security code required'])[1]/following::button[1]"
+      },
+      "verify_text": {
+        "type": "xpath",
+        "value": "(.//*[normalize-space(text()) and normalize-space(.)='Name on card'])[1]/following::small[1]"
+      }
+    },
+    "timeouts": {
+      "page_load": 10,
+      "element_wait": 10,
+      "action_delay": 1
+    }
+  },
+  "estimate_tax_test": {
+    "product_url": "https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=28",
+    "cart_url": "https://ecommerce-playground.lambdatest.io/index.php?route=checkout/cart",
+    "locators": {
+      "add_to_cart": {
+        "type": "xpath",
+        "value": "//button[@title='Add to Cart']"
+      },
+      "estimate_link": {
+        "type": "xpath",
+        "value": "//a[contains(text(),'Estimate Shipping & Taxes')]"
+      },
+      "country": {
+        "type": "id",
+        "value": "input-country"
+      },
+      "region": {
+        "type": "id",
+        "value": "input-zone"
+      },
+      "postcode": {
+        "type": "id",
+        "value": "input-postcode"
+      },
+      "get_quotes": {
+        "type": "id",
+        "value": "button-quote"
+      },
+      "shipping_rate": {
+        "type": "css",
+        "value": "div.form-check > label"
+      },
+      "error_message": {
+        "type": "xpath",
+        "value": "//div[@id='collapse-shipping']/div/div[3]/div/div"
+      }
+    },
+    "timeouts": {
+      "page_load": 15,
+      "element_wait": 15,
+      "action_delay": 2
+    }
+  }
+}

@@ -1,0 +1,6 @@
+pip install -r requirements.txt
+python TC-003/src/level1_checkout_datadriven.py
+python TC-003/src/level2_checkout_datadriven.py
+
+python TC-008/src/level1_cart_datadriven.py
+python TC-008/src/level2_cart_datadriven.py

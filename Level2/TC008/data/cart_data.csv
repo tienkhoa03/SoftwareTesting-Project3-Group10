@@ -1,0 +1,9 @@
+test_id,action,items_to_add,items_to_remove,initial_cart_count,verify_type,verify_value,expected_result
+TC008_001,navigate_cart,,,,title,Your Cart,Your Cart
+TC008_002,add_all_items,backpack bike-light bolt-t-shirt fleece-jacket onesie red-t-shirt,,0,cart_badge,6,6
+TC008_003,add_and_continue_shopping,backpack,,0,remove_button,Remove,Remove
+TC008_004,add_without_login,backpack,,0,error,Epic sadface: You can only access '/cart.html' when you are logged in.,Epic sadface: You can only access '/cart.html' when you are logged in.
+TC008_005,add_one_item,backpack,,0,cart_badge,1,1
+TC008_006,verify_and_remove,,backpack,2,cart_badge,1,1
+TC008_007,complex_flow,backpack bike-light bolt-t-shirt,backpack bike-light bolt-t-shirt,0,add_button,Add to cart,Add to cart
+

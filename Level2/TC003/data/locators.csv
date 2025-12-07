@@ -1,0 +1,19 @@
+name,type,value
+login_url,url,https://www.saucedemo.com/
+inventory_url,url,https://www.saucedemo.com/inventory.html
+cart_url,url,https://www.saucedemo.com/cart.html
+checkout_step_one_url,url,https://www.saucedemo.com/checkout-step-one.html
+checkout_step_two_url,url,https://www.saucedemo.com/checkout-step-two.html
+username_input,id,user-name
+password_input,id,password
+login_button,id,login-button
+add_backpack_button,id,add-to-cart-sauce-labs-backpack
+cart_link,css,a.shopping_cart_link
+checkout_button,id,checkout
+first_name_input,id,first-name
+last_name_input,id,last-name
+postal_code_input,id,postal-code
+continue_button,id,continue
+error_h3,xpath,//div[@id='checkout_info_container']/div/form/div/div[4]/h3
+title_span,css,div#header_container div.header_secondary_container span.title
+

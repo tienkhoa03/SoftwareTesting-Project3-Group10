@@ -1,0 +1,10 @@
+step_id,command,target,value
+openPage,open,https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust,
+typeFN,type,css=input[ng-model='fName'],${first_name}
+typeLN,type,css=input[ng-model='lName'],${last_name}
+typePC,type,css=input[ng-model='postCd'],${post_code}
+submit,click,css=button[type='submit'],
+acceptAlert,acceptAlert,,
+verifyFN,verifyFieldValue,css=input[ng-model='fName'],${expected_f_name}
+verifyLN,verifyFieldValue,css=input[ng-model='lName'],${expected_l_name}
+verifyPC,verifyFieldValue,css=input[ng-model='postCd'],${expected_post_code}

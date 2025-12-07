@@ -1,0 +1,2 @@
+Site_URL,Email_locator,Password_locator,Button_locator,Success_URL
+https://sweetshop.netlify.app/login,id=exampleInputEmail,id=exampleInputPassword,xpath=//button[@type='submit'],https://sweetshop.netlify.app/00efc23d-b605-4f31-b97b-6bb276de447e.html

@@ -1,0 +1,14 @@
+test_case_id,country,region,postcode,expected_type,expected_result
+TC-010-001,Viet Nam,An Giang,6000,shipping_rate,Flat Shipping Rate - $5.00
+TC-010-002,Viet Nam,An Giang,600,shipping_rate,Flat Shipping Rate - $5.00
+TC-010-003,Viet Nam,An Giang,60,shipping_rate,Flat Shipping Rate - $5.00
+TC-010-004,Viet Nam,An Giang,60000,shipping_rate,Flat Shipping Rate - $5.00
+TC-010-005,Viet Nam,An Giang,600000,shipping_rate,Flat Shipping Rate - $5.00
+TC-010-006,Viet Nam,An Giang,60000000,error,Postcode must be between 2 and 6 characters!
+TC-010-007,Viet Nam,An Giang,6000,shipping_rate,Flat Shipping Rate - $5.00
+TC-010-008,Viet Nam,An Giang,6000,error,Please select a country!
+TC-010-009,Viet Nam,An Giang,,shipping_rate,Flat Shipping Rate - $5.00
+TC-010-010,Viet Nam,An Giang,6000,shipping_rate,Flat Shipping Rate - $5.00
+TC-010-011,Viet Nam,An Giang,,shipping_rate,Flat Shipping Rate - $5.00
+TC-010-012,,,6000,error,Please select a country!
+TC-010-013,,,,,error,Please select a country!
