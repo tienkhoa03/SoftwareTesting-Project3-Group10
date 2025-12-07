@@ -1,5 +1,5 @@
 tc_id,firstname,lastname,email,telephone,password,confirm,agree,expect_type,expect_text
-TC-004-306,John,Doe,unique_uc_20251207_02@example.com,0901234567,Pass1234!,Pass1234!,yes,success,Your Account Has Been Created!
+TC-004-306,John,Doe,unique_uc_20251207_06@example.com,0901234567,Pass1234!,Pass1234!,yes,success,Your Account Has Been Created!
 TC-004-307,,Doe,uc_missingfn@example.com,0901234567,Pass1234!,Pass1234!,yes,field_error,
 TC-004-308,John,Doe,maivanhoangduy@gmail.com,0901234567,Pass1234!,Pass1234!,yes,alert,Warning: E-Mail Address is already registered!
 TC-004-309,John,Doe,uc_pwmm@example.com,0901234567,Pass1234!,Pass1234?,yes,field_error,
