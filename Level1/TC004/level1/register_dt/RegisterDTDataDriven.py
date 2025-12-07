@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -10,9 +11,12 @@ import unittest
 import time
 from pathlib import Path
 
+CHROMEDRIVER_PATH = Path(__file__).resolve().parent.parent.parent / "common" / "chromedriver.exe"
+
 class RegisterDTDataDriven(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path=r'f:\HK251\Testing\btl3\Duy\common\chromedriver.exe')
+        service = Service(executable_path=str(CHROMEDRIVER_PATH))
+        self.driver = webdriver.Chrome(service=service)
         self.driver.implicitly_wait(30)
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -39,35 +43,35 @@ class RegisterDTDataDriven(unittest.TestCase):
         driver = self.driver
         driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/register")
 
-        driver.find_element_by_id("input-firstname").clear()
-        driver.find_element_by_id("input-firstname").send_keys(row.get("firstname", ""))
+        driver.find_element(By.ID, "input-firstname").clear()
+        driver.find_element(By.ID, "input-firstname").send_keys(row.get("firstname", ""))
 
-        driver.find_element_by_id("input-lastname").clear()
-        driver.find_element_by_id("input-lastname").send_keys(row.get("lastname", ""))
+        driver.find_element(By.ID, "input-lastname").clear()
+        driver.find_element(By.ID, "input-lastname").send_keys(row.get("lastname", ""))
 
-        email_input = driver.find_element_by_id("input-email")
+        email_input = driver.find_element(By.ID, "input-email")
         # allow server-side validation by bypassing HTML5 email blocker
         driver.execute_script("arguments[0].setAttribute('type','text');", email_input)
         email_input.clear()
         email_input.send_keys(row.get("email", ""))
 
-        driver.find_element_by_id("input-telephone").clear()
-        driver.find_element_by_id("input-telephone").send_keys(row.get("telephone", ""))
+        driver.find_element(By.ID, "input-telephone").clear()
+        driver.find_element(By.ID, "input-telephone").send_keys(row.get("telephone", ""))
 
-        driver.find_element_by_id("input-password").clear()
-        driver.find_element_by_id("input-password").send_keys(row.get("password", ""))
+        driver.find_element(By.ID, "input-password").clear()
+        driver.find_element(By.ID, "input-password").send_keys(row.get("password", ""))
 
-        driver.find_element_by_id("input-confirm").clear()
-        driver.find_element_by_id("input-confirm").send_keys(row.get("confirm", ""))
+        driver.find_element(By.ID, "input-confirm").clear()
+        driver.find_element(By.ID, "input-confirm").send_keys(row.get("confirm", ""))
 
         agree_val = (row.get("agree", "").strip().lower() == "yes")
-        agree_checkbox = driver.find_element_by_id("input-agree")
+        agree_checkbox = driver.find_element(By.ID, "input-agree")
         if agree_checkbox.is_selected() != agree_val:
-            label = driver.find_element_by_css_selector('label[for="input-agree"]')
+            label = driver.find_element(By.CSS_SELECTOR, 'label[for="input-agree"]')
             driver.execute_script("arguments[0].scrollIntoView(true);", label)
             driver.execute_script("arguments[0].click();", label)
 
-        driver.find_element_by_css_selector("input[type=\"submit\"][value=\"Continue\"]").click()
+        driver.find_element(By.CSS_SELECTOR, "input[type=\"submit\"][value=\"Continue\"]").click()
         time.sleep(2)
 
         expect_type = row.get("expect_type", "").strip().lower()
@@ -76,13 +80,13 @@ class RegisterDTDataDriven(unittest.TestCase):
         if expect_type == "alert":
             self.assertTrue(self.is_element_present(By.CSS_SELECTOR, ".alert-danger"))
             if expect_text:
-                self.assertEqual(expect_text, driver.find_element_by_css_selector(".alert-danger").text)
+                self.assertEqual(expect_text, driver.find_element(By.CSS_SELECTOR, ".alert-danger").text)
         elif expect_type == "field_error":
             self.assertTrue(self.is_element_present(By.CSS_SELECTOR, ".text-danger"))
         elif expect_type == "success":
             self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "#content h1"))
             if expect_text:
-                self.assertEqual(expect_text, driver.find_element_by_css_selector("#content h1").text)
+                self.assertEqual(expect_text, driver.find_element(By.CSS_SELECTOR, "#content h1").text)
             driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/logout")
         else:
             self.fail(f"Unknown expect_type: {expect_type}")
@@ -108,4 +112,4 @@ class RegisterDTDataDriven(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)

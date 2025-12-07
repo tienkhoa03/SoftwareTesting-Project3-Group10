@@ -1,0 +1,738 @@
+===== DATA-DRIVEN TEST RUNNER =====
+Loaded config: {'stop_on_failure': 'false', 'wait_timeout': '10', 'sleep_after_step': '0'}
+Suites to run: BVA, DCT, ECP, UCT
+
+====================================================
+STARTING SUITE: BVA
+====================================================
+
+------------------------------
+TEST #01
+INPUT:
+   FIRST_NAME: ''
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] No alert present → PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='123456789012345' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='123456' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #02
+INPUT:
+   FIRST_NAME: '1'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='1'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #03
+INPUT:
+   FIRST_NAME: '12'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='12'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #04
+INPUT:
+   FIRST_NAME: '12345678901234567890123456789'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='12345678901234567890123456789'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #05
+INPUT:
+   FIRST_NAME: '123456789012345678901234567890'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345678901234567890'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #06
+INPUT:
+   FIRST_NAME: '1234567890123456789012345678901'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='1234567890123456789012345678901'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value='1234567890123456789012345678901'
+   [VERIFY FIELD] expected='1234567890123456789012345678901' | actual='' | PASS=False
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='' | PASS=False
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='' | PASS=False
+OUTPUT: FAIL
+
+------------------------------
+TEST #07
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: ''
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] No alert present → PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='123456789012345' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='123456' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #08
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '1'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='1'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #09
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '12'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='12'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #10
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '12345678901234567890123456789'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='12345678901234567890123456789'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #11
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345678901234567890'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345678901234567890'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #12
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '1234567890123456789012345678901'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='1234567890123456789012345678901'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='1234567890123456789012345678901'
+   [VERIFY FIELD] expected='1234567890123456789012345678901' | actual='' | PASS=False
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='' | PASS=False
+OUTPUT: FAIL
+
+------------------------------
+TEST #13
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '1'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='1'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='1'
+   [VERIFY FIELD] expected='1' | actual='' | PASS=False
+OUTPUT: FAIL
+
+------------------------------
+TEST #14
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '12'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='12'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #15
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #16
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456789'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456789'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #17
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '1234567890'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='1234567890'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #18
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '12345678901'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='12345678901'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='12345678901'
+   [VERIFY FIELD] expected='12345678901' | actual='' | PASS=False
+OUTPUT: FAIL
+
+------------------------------
+TEST #19
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+===== SUITE SUMMARY =====
+Suite: BVA
+Total: 19
+Pass : 15
+Fail : 4
+Time : 114.37s
+Status: FAIL
+=========================
+
+====================================================
+STARTING SUITE: DCT
+====================================================
+
+------------------------------
+TEST #01
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #02
+INPUT:
+   FIRST_NAME: ''
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] No alert present → PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='123456789012345' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='123456' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #03
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: ''
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] No alert present → PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='123456789012345' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='123456' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #04
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '1'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='1'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='1'
+   [VERIFY FIELD] expected='1' | actual='' | PASS=False
+OUTPUT: FAIL
+
+===== SUITE SUMMARY =====
+Suite: DCT
+Total: 4
+Pass : 3
+Fail : 1
+Time : 23.44s
+Status: FAIL
+=========================
+
+====================================================
+STARTING SUITE: ECP
+====================================================
+
+------------------------------
+TEST #01
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #02
+INPUT:
+   FIRST_NAME: ''
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] No alert present → PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='123456789012345' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='123456' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #03
+INPUT:
+   FIRST_NAME: '1234567890123456789012345678901'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='1234567890123456789012345678901'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value='1234567890123456789012345678901'
+   [VERIFY FIELD] expected='1234567890123456789012345678901' | actual='' | PASS=False
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='' | PASS=False
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='' | PASS=False
+OUTPUT: FAIL
+
+------------------------------
+TEST #04
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: ''
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] No alert present → PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='123456789012345' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='123456' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #05
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '1234567890123456789012345678901'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='1234567890123456789012345678901'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='' | PASS=False
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='1234567890123456789012345678901'
+   [VERIFY FIELD] expected='1234567890123456789012345678901' | actual='' | PASS=False
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='' | PASS=False
+OUTPUT: FAIL
+
+------------------------------
+TEST #06
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: ''
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] No alert present → PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='123456789012345' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='123456789012345' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #07
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '12345678901'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='12345678901'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='' | PASS=False
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='' | PASS=False
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='12345678901'
+   [VERIFY FIELD] expected='12345678901' | actual='' | PASS=False
+OUTPUT: FAIL
+
+===== SUITE SUMMARY =====
+Suite: ECP
+Total: 7
+Pass : 4
+Fail : 3
+Time : 42.36s
+Status: FAIL
+=========================
+
+====================================================
+STARTING SUITE: UCT
+====================================================
+
+------------------------------
+TEST #01
+INPUT:
+   FIRST_NAME: '123456789012345'
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] Text='Customer added successfully with customer id :6' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+OUTPUT: PASS
+
+------------------------------
+TEST #02
+INPUT:
+   FIRST_NAME: ''
+   LAST_NAME: '123456789012345'
+   POST_CODE: '123456'
+   [STEP] cmd=open | raw_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | raw_value='' | bound_target='https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager/addCust' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='fName']' | raw_value='${first_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [STEP] cmd=type | raw_target='css=input[ng-model='lName']' | raw_value='${last_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [STEP] cmd=type | raw_target='css=input[ng-model='postCd']' | raw_value='${post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [STEP] cmd=click | raw_target='css=button[type='submit']' | raw_value='' | bound_target='css=button[type='submit']' | bound_value=''
+   [STEP] cmd=acceptAlert | raw_target='' | raw_value='' | bound_target='' | bound_value=''
+   [ACCEPT ALERT] No alert present → PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='fName']' | raw_value='${expected_f_name}' | bound_target='css=input[ng-model='fName']' | bound_value=''
+   [VERIFY FIELD] expected='' | actual='' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='lName']' | raw_value='${expected_l_name}' | bound_target='css=input[ng-model='lName']' | bound_value='123456789012345'
+   [VERIFY FIELD] expected='123456789012345' | actual='123456789012345' | PASS=True
+   [STEP] cmd=verifyFieldValue | raw_target='css=input[ng-model='postCd']' | raw_value='${expected_post_code}' | bound_target='css=input[ng-model='postCd']' | bound_value='123456'
+   [VERIFY FIELD] expected='123456' | actual='123456' | PASS=True
+OUTPUT: PASS
+
+===== SUITE SUMMARY =====
+Suite: UCT
+Total: 2
+Pass : 2
+Fail : 0
+Time : 11.61s
+Status: PASS
+=========================
+
+===================== SUMMARY =====================
+Suite          | Total | Pass | Fail | Time   | Status
+----------------------------------------------------
+BVA            |    19 |   15 |    4 | 114.37s | FAIL
+DCT            |     4 |    3 |    1 |  23.44s | FAIL
+ECP            |     7 |    4 |    3 |  42.36s | FAIL
+UCT            |     2 |    2 |    0 |  11.61s | PASS
+----------------------------------------------------
+TOTAL          |    32 |   24 |    8 | 191.78s | FAIL
+====================================================

@@ -4,16 +4,18 @@ import time
 import unittest
 from pathlib import Path
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
-CHROMEDRIVER_PATH = Path(r"f:\HK251\Testing\btl3\Duy\common\chromedriver.exe")
+CHROMEDRIVER_PATH = Path(__file__).resolve().parent.parent.parent / "common" / "chromedriver.exe"
 DATA_FILE = Path(__file__).resolve().parent / "data" / "ECP_LOGIN.csv"
 
 
 class ECPLoginDataDriven(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path=str(CHROMEDRIVER_PATH))
+        service = Service(executable_path=str(CHROMEDRIVER_PATH))
+        self.driver = webdriver.Chrome(service=service)
         self.driver.implicitly_wait(20)
 
     def test_login_ecp(self):
@@ -36,24 +38,24 @@ class ECPLoginDataDriven(unittest.TestCase):
         expect_type = (row.get("expect_type", "") or "").strip().lower()
         expect_text = row.get("expect_text", "") or ""
 
-        email_input = driver.find_element_by_id("input-email")
+        email_input = driver.find_element(By.ID, "input-email")
         email_input.clear()
         email_input.send_keys(email)
 
-        pwd_input = driver.find_element_by_id("input-password")
+        pwd_input = driver.find_element(By.ID, "input-password")
         pwd_input.clear()
         pwd_input.send_keys(password)
 
-        driver.find_element_by_xpath("//input[@value='Login']").click()
+        driver.find_element(By.XPATH, "//input[@value='Login']").click()
         time.sleep(2)
 
         if expect_type == "success":
             self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "#content h2"))
             if expect_text:
-                self.assertIn(expect_text, driver.find_element_by_css_selector("#content h2").text)
+                self.assertIn(expect_text, driver.find_element(By.CSS_SELECTOR, "#content h2").text)
         elif expect_type == "alert":
             self.assertTrue(self.is_element_present(By.CSS_SELECTOR, ".alert-danger"))
-            actual = driver.find_element_by_css_selector(".alert-danger").text
+            actual = driver.find_element(By.CSS_SELECTOR, ".alert-danger").text
             lockout = "exceeded allowed number of login attempts"
             if expect_text and lockout.lower() not in actual.lower():
                 self.assertEqual(expect_text, actual)
@@ -76,4 +78,4 @@ class ECPLoginDataDriven(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)

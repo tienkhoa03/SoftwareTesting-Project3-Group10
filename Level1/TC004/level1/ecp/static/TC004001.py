@@ -19,13 +19,13 @@ class TC004001(unittest.TestCase):
         driver = self.driver
         driver.get(self.base_url + "chrome://newtab/")
         driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/login")
-        driver.find_element_by_id("input-email").click()
-        driver.find_element_by_id("input-email").clear()
-        driver.find_element_by_id("input-email").send_keys("maivanhoangduy@gmail.com")
-        driver.find_element_by_id("input-password").click()
-        driver.find_element_by_id("input-password").clear()
-        driver.find_element_by_id("input-password").send_keys("12345678")
-        driver.find_element_by_xpath("//input[@value='Login']").click()
+        driver.find_element(By.ID, "input-email").click()
+        driver.find_element(By.ID, "input-email").clear()
+        driver.find_element(By.ID, "input-email").send_keys("maivanhoangduy@gmail.com")
+        driver.find_element(By.ID, "input-password").click()
+        driver.find_element(By.ID, "input-password").clear()
+        driver.find_element(By.ID, "input-password").send_keys("12345678")
+        driver.find_element(By.XPATH, "//input[@value='Login']").click()
         driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/account")
     
     def is_element_present(self, how, what):

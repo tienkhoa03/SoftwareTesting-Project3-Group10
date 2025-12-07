@@ -18,15 +18,15 @@ class TC004110(unittest.TestCase):
     def test_t_c004110(self):
         driver = self.driver
         driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/login")
-        driver.find_element_by_id("input-email").click()
-        driver.find_element_by_id("input-email").clear()
-        driver.find_element_by_id("input-email").send_keys("maivanhoangduy@gmail.com")
-        driver.find_element_by_id("input-password").click()
-        driver.find_element_by_id("input-password").clear()
-        driver.find_element_by_id("input-password").send_keys("ppppppppppppppppppppppppppppppppppppppppppppppppppp")
-        driver.find_element_by_xpath("//input[@value='Login']").click()
-        driver.find_element_by_css_selector("div.alert.alert-danger.alert-dismissible").click()
-        self.assertEqual("Warning: No match for E-Mail Address and/or Password.", driver.find_element_by_css_selector("div.alert.alert-danger.alert-dismissible").text)
+        driver.find_element(By.ID, "input-email").click()
+        driver.find_element(By.ID, "input-email").clear()
+        driver.find_element(By.ID, "input-email").send_keys("maivanhoangduy@gmail.com")
+        driver.find_element(By.ID, "input-password").click()
+        driver.find_element(By.ID, "input-password").clear()
+        driver.find_element(By.ID, "input-password").send_keys("ppppppppppppppppppppppppppppppppppppppppppppppppppp")
+        driver.find_element(By.XPATH, "//input[@value='Login']").click()
+        driver.find_element(By.CSS_SELECTOR, "div.alert.alert-danger.alert-dismissible").click()
+        self.assertEqual("Warning: No match for E-Mail Address and/or Password.", driver.find_element(By.CSS_SELECTOR, "div.alert.alert-danger.alert-dismissible").text)
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

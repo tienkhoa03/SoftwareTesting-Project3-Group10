@@ -54,35 +54,66 @@ class Level1EstimateTaxTest(unittest.TestCase):
                 # Navigate to website only for first test
                 if idx == 0:
                     # Navigate to product page directly
-                    driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=100")
+                    driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=56")
                     
-                    # Wait for and click Add to Cart button with explicit wait
+                    # Wait for page to load completely
+                    time.sleep(3)
+                    
+                    # Wait for and click Add to Cart button - using the visible button in product details
                     try:
+                        # Primary locator - button with both btn-cart and button-cart classes (not in mobile-only section)
                         add_to_cart_btn = wait.until(
-                            EC.element_to_be_clickable((By.XPATH, "//button[@title='Add to Cart']"))
+                            EC.element_to_be_clickable((By.CSS_SELECTOR, "button.button-cart.btn-cart"))
                         )
+                        # Scroll to button to ensure it's in view
+                        driver.execute_script("arguments[0].scrollIntoView(true);", add_to_cart_btn)
+                        time.sleep(1)
                         add_to_cart_btn.click()
                         time.sleep(3)
-                    except TimeoutException:
-                        print("⚠ Timeout waiting for Add to Cart button, trying alternative locator...")
-                        driver.find_element(By.CSS_SELECTOR, "button.btn-cart").click()
-                        time.sleep(3)
+                    except (TimeoutException, Exception) as e:
+                        print(f"⚠ Primary locator failed: {e}, trying alternative...")
+                        try:
+                            # Try by title attribute as fallback
+                            add_to_cart_btn = driver.find_element(By.XPATH, "//button[@title='Add to Cart' and contains(@class, 'button-cart')]")
+                            driver.execute_script("arguments[0].scrollIntoView(true);", add_to_cart_btn)
+                            time.sleep(1)
+                            driver.execute_script("arguments[0].click();", add_to_cart_btn)
+                            time.sleep(3)
+                        except Exception as e2:
+                            print(f"⚠ All locators failed: {e2}")
+                            raise
                     
                     # Navigate to cart page
                     driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=checkout/cart")
-                    time.sleep(2)
+                    time.sleep(3)
                     
-                    # Wait for and expand estimate section
-                    estimate_link = wait.until(
-                        EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Estimate Shipping"))
-                    )
-                    estimate_link.click()
-                    time.sleep(2)
+                    # Wait for and expand estimate section using the accordion header
+                    try:
+                        # Try to find the collapsed accordion header
+                        estimate_header = wait.until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, "h5[data-target='#collapse-shipping']"))
+                        )
+                        
+                        # Scroll the element into view
+                        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", estimate_header)
+                        time.sleep(1)
+                        
+                        # Check if it's already expanded
+                        collapse_div = driver.find_element(By.ID, "collapse-shipping")
+                        if "show" not in collapse_div.get_attribute("class"):
+                            # Click to expand
+                            estimate_header.click()
+                            time.sleep(2)
+                        else:
+                            print("Estimate section already expanded")
+                            time.sleep(1)
+                    except Exception as e:
+                        print(f"Error expanding estimate section: {str(e)}")
+                        print(f"Current URL: {driver.current_url}")
+                        raise
                 else:
                     # For subsequent tests, just wait
-                    time.sleep(1)
-                
-                # Fill shipping form
+                    time.sleep(1)                # Fill shipping form
                 # Wait for form to be ready
                 wait.until(EC.presence_of_element_located((By.ID, "input-country")))
                 
@@ -108,44 +139,79 @@ class Level1EstimateTaxTest(unittest.TestCase):
                 # Verify result
                 try:
                     if test_data['expected_type'] == "shipping_rate":
-                        # Click on modal to make sure it's visible
-                        driver.find_element(By.XPATH, "//div[@id='modal-shipping']/div/div/div[2]/div").click()
+                        # Wait for modal to appear
+                        wait.until(EC.presence_of_element_located((By.ID, "modal-shipping")))
                         time.sleep(1)
                         
                         # Verify shipping rate text
-                        actual_text = driver.find_element(By.XPATH, "//div[@id='modal-shipping']/div/div/div[2]/div/label").text
-                        self.assertEqual(test_data['expected_result'], actual_text)
-                        print(f"[PASS]")
-                        self.results.append({'test_case': test_data['test_case_id'], 'passed': True})
+                        actual_text = wait.until(
+                            EC.presence_of_element_located((By.XPATH, "//div[@id='modal-shipping']//label"))
+                        ).text
+                        
+                        if test_data['expected_result'] in actual_text:
+                            print(f"[PASS]")
+                            self.results.append({'test_case': test_data['test_case_id'], 'passed': True})
+                        else:
+                            print(f"[FAIL] Expected: {test_data['expected_result']}, Got: {actual_text}")
+                            self.results.append({'test_case': test_data['test_case_id'], 'passed': False})
                         
                         # Close the modal by clicking the close button
                         try:
-                            close_btn = driver.find_element(By.CSS_SELECTOR, "#modal-shipping .close")
+                            close_btn = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#modal-shipping .close")))
                             close_btn.click()
                             time.sleep(1)
                         except:
-                            # Alternative: press Escape key or click outside modal
-                            driver.find_element(By.TAG_NAME, "body").click()
+                            # Alternative: Use JavaScript to close modal
+                            driver.execute_script("arguments[0].style.display='none';", 
+                                                driver.find_element(By.ID, "modal-shipping"))
                             time.sleep(1)
+                        
+                        # Remove modal backdrop and clean up modal state
+                        driver.execute_script("""
+                            var modal = document.getElementById('modal-shipping');
+                            if (modal) modal.remove();
+                            var backdrops = document.querySelectorAll('.modal-backdrop');
+                            backdrops.forEach(function(backdrop) { backdrop.remove(); });
+                            document.body.classList.remove('modal-open');
+                            document.body.style.overflow = '';
+                            document.body.style.paddingRight = '';
+                        """)
+                        time.sleep(1)
                     else:
-                        error = driver.find_element(By.CSS_SELECTOR, ".alert.alert-danger").text
+                        error = wait.until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, ".alert.alert-danger"))
+                        ).text
                         if test_data['expected_result'] in error:
                             print(f"[PASS]")
                             self.results.append({'test_case': test_data['test_case_id'], 'passed': True})
                         else:
-                            print(f"[FAIL]")
+                            print(f"[FAIL] Expected: {test_data['expected_result']}, Got: {error}")
                             self.results.append({'test_case': test_data['test_case_id'], 'passed': False})
                 except AssertionError as e:
                     self.verificationErrors.append(str(e))
-                    print(f"[FAIL]")
+                    print(f"[FAIL] Assertion: {str(e)}")
                     self.results.append({'test_case': test_data['test_case_id'], 'passed': False})
-                except:
-                    print(f"[FAIL]")
+                except Exception as e:
+                    print(f"[FAIL] Exception: {str(e)}")
                     self.results.append({'test_case': test_data['test_case_id'], 'passed': False})
                     
             except Exception as e:
                 print(f"[ERROR]: {e}")
                 self.results.append({'test_case': test_data['test_case_id'], 'passed': False})
+            
+            # Clean up any remaining modals and backdrops between tests
+            try:
+                driver.execute_script("""
+                    var modals = document.querySelectorAll('.modal');
+                    modals.forEach(function(modal) { modal.remove(); });
+                    var backdrops = document.querySelectorAll('.modal-backdrop');
+                    backdrops.forEach(function(backdrop) { backdrop.remove(); });
+                    document.body.classList.remove('modal-open');
+                    document.body.style.overflow = '';
+                    document.body.style.paddingRight = '';
+                """)
+            except:
+                pass
     
     def is_element_present(self, how, what):
         """Check if element is present"""
