@@ -29,9 +29,31 @@ def create_driver() -> webdriver.Firefox:
 
 def login(driver, username: str = "standard_user", password: str = "secret_sauce") -> None:
     driver.get(SAUCE_BASE_URL)
+    time.sleep(0.5)  # Wait for page to load
     driver.find_element(By.ID, "user-name").send_keys(username)
     driver.find_element(By.ID, "password").send_keys(password)
     driver.find_element(By.ID, "login-button").click()
+    time.sleep(0.5)  # Wait for login to complete
+
+
+def clear_cart(driver) -> None:
+    """Clear all items from cart if any exist."""
+    try:
+        login(driver)
+        time.sleep(0.5)
+        
+        driver.get(SAUCE_BASE_URL + "cart.html")
+        time.sleep(0.5)
+        # Remove all items from cart
+        while True:
+            try:
+                remove_btn = driver.find_element(By.CSS_SELECTOR, "button.btn.btn_secondary.btn_small.cart_button")
+                remove_btn.click()
+                time.sleep(0.3)
+            except:
+                break
+    except:
+        pass
 
 
 def add_item_to_cart(driver, item_name: str) -> None:
@@ -71,7 +93,8 @@ def get_cart_badge_count(driver) -> str:
         return ""
 
 
-def run_cart_test(row: dict) -> None:
+def run_cart_test(row: dict, driver: webdriver.Firefox) -> str:
+    """Run a single cart test case. Returns 'PASS' or 'FAIL'."""
     test_id = row["test_id"]
     action = row["action"]
     items_to_add = row["items_to_add"].strip() if row["items_to_add"] else ""
@@ -81,14 +104,15 @@ def run_cart_test(row: dict) -> None:
     verify_value = row["verify_value"]
     expected_result = row["expected_result"]
 
-    driver = create_driver()
     try:
-        # Handle login requirement
+        # Clear cart before each test to ensure clean state
+        if action != "add_without_login":
+            clear_cart(driver)
+
         if action != "add_without_login":
             login(driver)
-            time.sleep(1)
+            time.sleep(0.5)
 
-        # Navigate to inventory page
         if action != "navigate_cart" and action != "add_without_login":
             driver.get(SAUCE_BASE_URL + "inventory.html")
             time.sleep(1)
@@ -134,10 +158,17 @@ def run_cart_test(row: dict) -> None:
             time.sleep(1)
             # Delete cookie right before adding item to simulate expired session
             driver.delete_cookie("session-username")
-            add_item_to_cart(driver, items_to_add.split()[0])
             time.sleep(0.5)
-            driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
-            time.sleep(1)
+            try:
+                add_item_to_cart(driver, items_to_add.split()[0])
+                time.sleep(0.5)
+            except Exception:
+                pass
+            try:
+                driver.get(SAUCE_BASE_URL + "cart.html")
+                time.sleep(1)
+            except Exception:
+                pass
         elif action == "add_one_item":
             add_item_to_cart(driver, items_to_add.split()[0])
             time.sleep(0.5)
@@ -222,26 +253,30 @@ def run_cart_test(row: dict) -> None:
 
         result = "PASS" if actual == expected_result else "FAIL"
         print(f"[{test_id}] {result} - expected='{expected_result}' actual='{actual}'")
+        return result
     except Exception as exc:  # noqa: BLE001
         print(f"[{test_id}] ERROR: {exc}")
         import traceback
         traceback.print_exc()
-    finally:
-        try:
-            driver.quit()
-        except Exception:
-            pass 
+        return "FAIL" 
 
 
 def main() -> None:
     if not DATA_FILE.exists():
         raise FileNotFoundError(f"Test data file not found: {DATA_FILE}")
 
-    with DATA_FILE.open(newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            run_cart_test(row)
-            time.sleep(0.5) 
+    driver = create_driver()
+    try:
+        with DATA_FILE.open(newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                run_cart_test(row, driver)
+                time.sleep(0.5)
+    finally:
+        try:
+            driver.quit()
+        except Exception:
+            pass 
 
 
 if __name__ == "__main__":

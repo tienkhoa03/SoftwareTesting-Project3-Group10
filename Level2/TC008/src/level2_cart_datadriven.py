@@ -57,9 +57,32 @@ def find(driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]], name: 
 def login(driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]]) -> None:
     login_url = locators["login_url"][1]
     driver.get(login_url)
+    time.sleep(0.5)  # Wait for page to load
     find(driver, locators, "username_input").send_keys("standard_user")
     find(driver, locators, "password_input").send_keys("secret_sauce")
     find(driver, locators, "login_button").click()
+    time.sleep(0.5)  # Wait for login to complete
+
+
+def clear_cart(driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]]) -> None:
+    """Clear all items from cart if any exist."""
+    try:
+        login(driver, locators)
+        time.sleep(0.5)
+        
+        cart_url = locators["cart_url"][1]
+        driver.get(cart_url)
+        time.sleep(0.5)
+        # Remove all items from cart
+        while True:
+            try:
+                remove_btn = driver.find_element(By.CSS_SELECTOR, "button.btn.btn_secondary.btn_small.cart_button")
+                remove_btn.click()
+                time.sleep(0.3)
+            except:
+                break
+    except:
+        pass
 
 
 def add_item_to_cart(driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]], item_name: str) -> None:
@@ -99,7 +122,8 @@ def get_cart_badge_count(driver: webdriver.Firefox, locators: Dict[str, Tuple[st
         return ""
 
 
-def run_cart_test(row: dict, locators: Dict[str, Tuple[str, str]]) -> None:
+def run_cart_test(row: dict, driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]]) -> str:
+    """Run a single cart test case. Returns 'PASS' or 'FAIL'."""
     test_id = row["test_id"]
     action = row["action"]
     items_to_add = row["items_to_add"].strip() if row["items_to_add"] else ""
@@ -109,14 +133,15 @@ def run_cart_test(row: dict, locators: Dict[str, Tuple[str, str]]) -> None:
     verify_value = row["verify_value"]
     expected_result = row["expected_result"]
 
-    driver = create_driver()
     try:
-        # Handle login requirement
+        # Clear cart before each test to ensure clean state
+        if action != "add_without_login":
+            clear_cart(driver, locators)
+
         if action != "add_without_login":
             login(driver, locators)
-            time.sleep(1)
+            time.sleep(0.5)
 
-        # Navigate to inventory page
         if action != "navigate_cart" and action != "add_without_login":
             inventory_url = locators["inventory_url"][1]
             driver.get(inventory_url)
@@ -167,10 +192,18 @@ def run_cart_test(row: dict, locators: Dict[str, Tuple[str, str]]) -> None:
             time.sleep(1)
             # Delete cookie right before adding item to simulate expired session
             driver.delete_cookie("session-username")
-            add_item_to_cart(driver, locators, items_to_add.split()[0])
             time.sleep(0.5)
-            find(driver, locators, "cart_link").click()
-            time.sleep(1)
+            try:
+                add_item_to_cart(driver, locators, items_to_add.split()[0])
+                time.sleep(0.5)
+            except Exception:
+                pass
+            try:
+                cart_url = locators["cart_url"][1]
+                driver.get(cart_url)
+                time.sleep(1)
+            except Exception:
+                pass
         elif action == "add_one_item":
             add_item_to_cart(driver, locators, items_to_add.split()[0])
             time.sleep(0.5)
@@ -237,15 +270,12 @@ def run_cart_test(row: dict, locators: Dict[str, Tuple[str, str]]) -> None:
 
         result = "PASS" if actual == expected_result else "FAIL"
         print(f"[{test_id}] {result} - expected='{expected_result}' actual='{actual}'")
+        return result
     except Exception as exc:  # noqa: BLE001
         print(f"[{test_id}] ERROR: {exc}")
         import traceback
         traceback.print_exc()
-    finally:
-        try:
-            driver.quit()
-        except Exception:
-            pass 
+        return "FAIL" 
 
 
 def main() -> None:
@@ -256,11 +286,18 @@ def main() -> None:
 
     locators = load_locators()
 
-    with DATA_FILE.open(newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            run_cart_test(row, locators)
-            time.sleep(0.5)
+    driver = create_driver()
+    try:
+        with DATA_FILE.open(newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                run_cart_test(row, driver, locators)
+                time.sleep(0.5)
+    finally:
+        try:
+            driver.quit()
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":

@@ -29,20 +29,57 @@ def create_driver() -> webdriver.Firefox:
 
 def login(driver, username: str = "standard_user", password: str = "secret_sauce") -> None:
     driver.get(SAUCE_BASE_URL)
+    time.sleep(0.5)  # Wait for page to load
     driver.find_element(By.ID, "user-name").send_keys(username)
     driver.find_element(By.ID, "password").send_keys(password)
     driver.find_element(By.ID, "login-button").click()
+    time.sleep(0.5)  # Wait for login to complete
+
+
+def clear_cart(driver) -> None:
+    """Clear all items from cart if any exist."""
+    try:
+        driver.get(SAUCE_BASE_URL + "cart.html")
+        time.sleep(0.5)
+        # Remove all items from cart
+        while True:
+            try:
+                remove_btn = driver.find_element(By.CSS_SELECTOR, "button.btn.btn_secondary.btn_small.cart_button")
+                remove_btn.click()
+                time.sleep(0.3)
+            except:
+                break
+    except:
+        pass
 
 
 def go_to_checkout_step_one(driver) -> None:
     """Mimic the flow to reach checkout step one page."""
+    clear_cart(driver)
+    
     driver.get(SAUCE_BASE_URL + "inventory.html")
+    time.sleep(1)  # Wait for page to fully load
+    
+    try:
+        add_btn = driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack")
+        if add_btn.text.strip().upper() == "REMOVE":
+            add_btn.click()  # Remove it first
+            time.sleep(0.3)
+    except:
+        pass
+    
     driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
+    time.sleep(0.5)
+    
     driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+    time.sleep(0.5)
+    
     driver.find_element(By.ID, "checkout").click()
+    time.sleep(0.5)
 
 
-def run_checkout_test(row: dict) -> None:
+def run_checkout_test(row: dict, driver: webdriver.Firefox) -> str:
+    """Run a single checkout test case. Returns 'PASS' or 'FAIL'."""
     test_id = row["test_id"]
     first_name = row["first_name"]
     last_name = row["last_name"]
@@ -50,7 +87,6 @@ def run_checkout_test(row: dict) -> None:
     expected_type = row["expected_type"]
     expected_value = row["expected_value"]
 
-    driver = create_driver()
     try:
         login(driver)
         go_to_checkout_step_one(driver)
@@ -90,26 +126,30 @@ def run_checkout_test(row: dict) -> None:
 
         result = "PASS" if actual == expected_value else "FAIL"
         print(f"[{test_id}] {result} - expected='{expected_value}' actual='{actual}'")
+        return result
     except Exception as exc:  # noqa: BLE001
         print(f"[{test_id}] ERROR: {exc}")
         import traceback
         traceback.print_exc()
-    finally:
-        try:
-            driver.quit()
-        except Exception:
-            pass 
+        return "FAIL" 
 
 
 def main() -> None:
     if not DATA_FILE.exists():
         raise FileNotFoundError(f"Test data file not found: {DATA_FILE}")
 
-    with DATA_FILE.open(newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            run_checkout_test(row)
-            time.sleep(0.5) 
+    driver = create_driver()
+    try:
+        with DATA_FILE.open(newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                run_checkout_test(row, driver)
+                time.sleep(0.5)
+    finally:
+        try:
+            driver.quit()
+        except Exception:
+            pass 
 
 
 if __name__ == "__main__":

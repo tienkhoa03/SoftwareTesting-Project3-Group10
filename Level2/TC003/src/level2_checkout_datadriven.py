@@ -55,20 +55,59 @@ def find(driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]], name: 
 def login(driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]]) -> None:
     login_url = locators["login_url"][1]
     driver.get(login_url)
+    time.sleep(0.5)  # Wait for page to load
     find(driver, locators, "username_input").send_keys("standard_user")
     find(driver, locators, "password_input").send_keys("secret_sauce")
     find(driver, locators, "login_button").click()
+    time.sleep(0.5)  # Wait for login to complete
+
+
+def clear_cart(driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]]) -> None:
+    """Clear all items from cart if any exist."""
+    try:
+        cart_url = locators["cart_url"][1]
+        driver.get(cart_url)
+        time.sleep(0.5)
+        # Remove all items from cart using CSS selector
+        while True:
+            try:
+                remove_btn = driver.find_element(By.CSS_SELECTOR, "button.btn.btn_secondary.btn_small.cart_button")
+                remove_btn.click()
+                time.sleep(0.3)
+            except:
+                break
+    except:
+        pass
 
 
 def go_to_checkout_step_one(driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]]) -> None:
+    """Mimic the flow to reach checkout step one page."""
+    clear_cart(driver, locators)
+    
     inventory_url = locators["inventory_url"][1]
     driver.get(inventory_url)
+    time.sleep(1)  # Wait for page to fully load
+    
+    try:
+        add_btn = find(driver, locators, "add_backpack_button")
+        if add_btn.text.strip().upper() == "REMOVE":
+            add_btn.click()  # Remove it first
+            time.sleep(0.3)
+    except:
+        pass
+    
     find(driver, locators, "add_backpack_button").click()
+    time.sleep(0.5)
+    
     find(driver, locators, "cart_link").click()
+    time.sleep(0.5)
+    
     find(driver, locators, "checkout_button").click()
+    time.sleep(0.5)
 
 
-def run_checkout_test(row: dict, locators: Dict[str, Tuple[str, str]]) -> None:
+def run_checkout_test(row: dict, driver: webdriver.Firefox, locators: Dict[str, Tuple[str, str]]) -> str:
+    """Run a single checkout test case. Returns 'PASS' or 'FAIL'."""
     test_id = row["test_id"]
     first_name = row["first_name"]
     last_name = row["last_name"]
@@ -76,7 +115,6 @@ def run_checkout_test(row: dict, locators: Dict[str, Tuple[str, str]]) -> None:
     expected_type = row["expected_type"]
     expected_value = row["expected_value"]
 
-    driver = create_driver()
     try:
         login(driver, locators)
         go_to_checkout_step_one(driver, locators)
@@ -110,15 +148,12 @@ def run_checkout_test(row: dict, locators: Dict[str, Tuple[str, str]]) -> None:
 
         result = "PASS" if actual == expected_value else "FAIL"
         print(f"[{test_id}] {result} - expected='{expected_value}' actual='{actual}'")
+        return result
     except Exception as exc:  # noqa: BLE001
         print(f"[{test_id}] ERROR: {exc}")
         import traceback
         traceback.print_exc()
-    finally:
-        try:
-            driver.quit()
-        except Exception:
-            pass  
+        return "FAIL"  
 
 
 def main() -> None:
@@ -129,11 +164,18 @@ def main() -> None:
 
     locators = load_locators()
 
-    with DATA_FILE.open(newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            run_checkout_test(row, locators)
-            time.sleep(0.5) 
+    driver = create_driver()
+    try:
+        with DATA_FILE.open(newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                run_checkout_test(row, driver, locators)
+                time.sleep(0.5)
+    finally:
+        try:
+            driver.quit()
+        except Exception:
+            pass 
 
 
 if __name__ == "__main__":
