@@ -74,7 +74,7 @@
     }
   },
   "estimate_tax_test": {
-    "product_url": "https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=28",
+    "product_url": "https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=56",
     "cart_url": "https://ecommerce-playground.lambdatest.io/index.php?route=checkout/cart",
     "locators": {
       "add_to_cart": {
