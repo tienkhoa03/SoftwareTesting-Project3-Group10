@@ -13,7 +13,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = PROJECT_ROOT / "data" / "checkout_data.csv"
 LOCATOR_FILE = PROJECT_ROOT / "data" / "locators.csv"
-GECKODRIVER_PATH = PROJECT_ROOT.parent / "geckodriver.exe"
+GECKODRIVER_PATH = PROJECT_ROOT / "geckodriver.exe"
 
 
 def load_locators() -> Dict[str, Tuple[str, str]]:
