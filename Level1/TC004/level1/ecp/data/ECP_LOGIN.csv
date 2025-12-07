@@ -1,0 +1,7 @@
+tc_id,email,password,expect_type,expect_text
+ECP-001,maivanhoangduy@gmail.com,12345678,success,My Account
+ECP-002,,12345678,alert,Warning: No match for E-Mail Address and/or Password.
+ECP-003,invalid@,12345678,alert,Warning: No match for E-Mail Address and/or Password.
+ECP-004,maivanhoangduy@gmail.com,,alert,Warning: No match for E-Mail Address and/or Password.
+ECP-005,maivanhoangduy@gmail.com,wrongpass,alert,Warning: No match for E-Mail Address and/or Password.
+ECP-006,   ,   ,alert,Warning: No match for E-Mail Address and/or Password.

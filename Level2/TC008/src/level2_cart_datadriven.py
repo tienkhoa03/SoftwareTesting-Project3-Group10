@@ -117,7 +117,7 @@ def run_cart_test(row: dict, locators: Dict[str, Tuple[str, str]]) -> None:
             time.sleep(1)
 
         # Navigate to inventory page
-        if action != "navigate_cart":
+        if action != "navigate_cart" and action != "add_without_login":
             inventory_url = locators["inventory_url"][1]
             driver.get(inventory_url)
             time.sleep(1)
@@ -159,10 +159,14 @@ def run_cart_test(row: dict, locators: Dict[str, Tuple[str, str]]) -> None:
                 find(driver, locators, "continue_shopping_button").click()
                 time.sleep(1)
         elif action == "add_without_login":
-            # Don't login, just try to access cart
+            # TC-008-004: Login, navigate to inventory, delete cookie before adding item
+            login(driver, locators)
+            time.sleep(1)
             inventory_url = locators["inventory_url"][1]
             driver.get(inventory_url)
             time.sleep(1)
+            # Delete cookie right before adding item to simulate expired session
+            driver.delete_cookie("session-username")
             add_item_to_cart(driver, locators, items_to_add.split()[0])
             time.sleep(0.5)
             find(driver, locators, "cart_link").click()

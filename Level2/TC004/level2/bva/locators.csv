@@ -1,0 +1,7 @@
+name,type,value
+login_url,url,https://ecommerce-playground.lambdatest.io/index.php?route=account/login
+email_input,id,input-email
+password_input,id,input-password
+login_button,xpath,//input[@value='Login']
+account_heading,css,#content h2
+alert_danger,css,.alert-danger

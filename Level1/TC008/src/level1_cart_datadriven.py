@@ -89,7 +89,7 @@ def run_cart_test(row: dict) -> None:
             time.sleep(1)
 
         # Navigate to inventory page
-        if action != "navigate_cart":
+        if action != "navigate_cart" and action != "add_without_login":
             driver.get(SAUCE_BASE_URL + "inventory.html")
             time.sleep(1)
 
@@ -127,9 +127,13 @@ def run_cart_test(row: dict) -> None:
                 driver.find_element(By.ID, "continue-shopping").click()
                 time.sleep(1)
         elif action == "add_without_login":
-            # Don't login, just try to access cart
+            # TC-008-004: Login, navigate to inventory, delete cookie before adding item
+            login(driver)
+            time.sleep(1)
             driver.get(SAUCE_BASE_URL + "inventory.html")
             time.sleep(1)
+            # Delete cookie right before adding item to simulate expired session
+            driver.delete_cookie("session-username")
             add_item_to_cart(driver, items_to_add.split()[0])
             time.sleep(0.5)
             driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()

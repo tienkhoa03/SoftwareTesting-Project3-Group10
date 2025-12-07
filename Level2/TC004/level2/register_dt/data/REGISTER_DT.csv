@@ -1,0 +1,9 @@
+tc_id,firstname,lastname,email,telephone,password,confirm,agree,expect_type,expect_text
+TC-004-201,John,Doe,unique_20251207_02@example.com,0901234567,Pass1234!,Pass1234!,yes,success,Your Account Has Been Created!
+TC-004-202,,Doe,missingfn@example.com,0901234567,Pass1234!,Pass1234!,yes,field_error,
+TC-004-203,John,,missingln@example.com,0901234567,Pass1234!,Pass1234!,yes,field_error,
+TC-004-204,John,Doe,a,0901234567,Pass1234!,Pass1234!,yes,field_error,
+TC-004-205,John,Doe,maivanhoangduy1@gmail.com,0901234567,Pass1234!,Pass1234!,yes,alert,Warning: E-Mail Address is already registered!
+TC-004-206,John,Doe,missingphone@example.com,,Pass1234!,Pass1234!,yes,field_error,
+TC-004-207,John,Doe,pwmm@example.com,0901234567,Pass1234!,Pass1234?,yes,field_error,
+TC-004-208,John,Doe,noprivacy1234@example.com,0901234567,Pass1234!,Pass1234!,no,alert,Warning: You must agree to the Privacy Policy!
