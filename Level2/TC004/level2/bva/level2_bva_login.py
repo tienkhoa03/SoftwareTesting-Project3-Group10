@@ -5,12 +5,13 @@ from pathlib import Path
 from typing import Dict, Tuple
 
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 DATA_FILE = PROJECT_ROOT / "data" / "BVA_LOGIN.csv"
 LOCATOR_FILE = PROJECT_ROOT / "locators.csv"
-CHROMEDRIVER_PATH = Path(r"f:\HK251\Testing\btl3\Duy\common\chromedriver.exe")
+CHROMEDRIVER_PATH = Path(__file__).resolve().parent.parent.parent / "common" / "chromedriver.exe"
 
 
 def load_locators() -> Dict[str, Tuple[str, str]]:
@@ -23,7 +24,8 @@ def load_locators() -> Dict[str, Tuple[str, str]]:
 
 
 def create_driver() -> webdriver.Chrome:
-    driver = webdriver.Chrome(executable_path=str(CHROMEDRIVER_PATH))
+    service = Service(executable_path=str(CHROMEDRIVER_PATH))
+    driver = webdriver.Chrome(service=service)
     driver.implicitly_wait(10)
     return driver
 
